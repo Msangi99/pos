@@ -11,8 +11,19 @@ export default {
     ],
     theme: {
         extend: {
+            colors: {
+                'deep-navy': '#0A0E1A',
+                'royal-blue': '#1A237E',
+                'bright-blue': '#2979FF',
+                'cyan': '#00E5FF',
+                'vibrant-green': '#76FF03',
+            },
+            borderRadius: {
+                'xl': '12px',
+                '2xl': '16px',
+            },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', 'Roboto', 'Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
     },
