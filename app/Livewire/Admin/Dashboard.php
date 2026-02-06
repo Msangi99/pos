@@ -15,6 +15,7 @@ class Dashboard extends Component
     {
         $todaySales = \App\Models\Sale::where('tenant_id', auth()->user()->tenant_id)
             ->whereDate('created_at', \Carbon\Carbon::today())
+            ->where('status', 'completed')
             ->get();
 
         $this->todayRevenue = $todaySales->sum('total_amount');

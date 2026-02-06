@@ -17,6 +17,11 @@ class Sale extends Model
         'status',
     ];
 
+    public function scopeCompleted($query)
+    {
+        return $query->where('status', 'completed');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -25,5 +30,17 @@ class Sale extends Model
     public function items()
     {
         return $this->hasMany(SaleItem::class);
+    }
+
+    public function getBuyPriceAttribute()
+    {
+        return $this->items->sum(function ($item) {
+            return $item->quantity * ($item->product->buy_price ?? 0);
+        });
+    }
+
+    public function getProfitAttribute()
+    {
+        return $this->total_amount - $this->buy_price;
     }
 }

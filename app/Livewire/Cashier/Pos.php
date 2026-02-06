@@ -123,7 +123,7 @@ class Pos extends Component
                 'tax' => $this->tax,
                 'total_amount' => $this->total,
                 'payment_method' => 'cash', // Default for now
-                'status' => 'completed',
+                'status' => 'pending',
             ]);
 
             // 2. Create Sale Items & Update Stock

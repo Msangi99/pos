@@ -5,7 +5,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Project Resta' }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-</head>
+    
+    <!-- DateRangePicker Dependencies -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <style>
+        /* Custom Dark Mode for DateRangePicker */
+        .daterangepicker {
+            background-color: #1a202c; /* bg-gray-900 */
+            border: 1px solid #2d3748; /* border-gray-800 */
+            color: #fff;
+            font-family: inherit;
+        }
+        .daterangepicker .calendar-table {
+            background-color: #1a202c;
+            border: 1px solid #1a202c;
+        }
+        .daterangepicker td.off, .daterangepicker td.off.in-range, .daterangepicker td.off.start-date, .daterangepicker td.off.end-date {
+            background-color: #1a202c;
+            color: #4a5568;
+        }
+        .daterangepicker td.available:hover, .daterangepicker th.available:hover {
+            background-color: #2d3748;
+            color: #fff;
+        }
+        .daterangepicker td.in-range {
+            background-color: #2c5282; /* blue-800 */
+            color: #fff;
+        }
+        .daterangepicker td.active, .daterangepicker td.active:hover {
+            background-color: #3182ce; /* blue-500 */
+            color: #fff;
+        }
+        .daterangepicker .ranges li {
+            background-color: #1a202c;
+            color: #a0aec0; /* gray-400 */
+        }
+        .daterangepicker .ranges li:hover {
+            background-color: #2d3748;
+            color: #fff;
+        }
+        .daterangepicker .ranges li.active {
+            background-color: #3182ce;
+            color: #fff;
+        }
+        .daterangepicker:before, .daterangepicker:after {
+            border-bottom-color: #2d3748;
+        }
+        .daterangepicker select.monthselect, .daterangepicker select.yearselect {
+            background-color: #2d3748;
+            color: #fff;
+            border: 1px solid #4a5568;
+        }
+        .daterangepicker .drp-buttons {
+            border-top: 1px solid #2d3748;
+        }
+        .daterangepicker .drp-selected {
+            color: #cbd5e0;
+        }
+    </style>
 <body class="bg-deep-navy text-white font-sans antialiased min-h-screen flex">
 
     <!-- Sidebar (Shared) -->
@@ -56,12 +116,15 @@
             @if(auth()->user()->role === 'cashier')
             <a href="{{ route('cashier.pos') }}" wire:navigate class="flex items-center px-4 py-3 {{ request()->routeIs('cashier.pos') ? 'bg-royal-blue/30 text-cyan' : 'text-gray-400 hover:text-white hover:bg-white/5' }} rounded-xl transition">
                 <span class="mr-3">🛒</span>
-                <span class="font-medium">POS</span>
+                <span class="font-medium">Pos</span>
             </a>
             <a href="{{ route('cashier.sales') }}" wire:navigate class="flex items-center px-4 py-3 {{ request()->routeIs('cashier.sales') ? 'bg-royal-blue/30 text-cyan' : 'text-gray-400 hover:text-white hover:bg-white/5' }} rounded-xl transition">
                 <span class="mr-3">💰</span>
                 <span class="font-medium">My Sales</span>
             </a>
+            <div class="px-4 py-3 text-gray-500 text-xs uppercase tracking-wider">
+                Seller Panel
+            </div>
             @endif
         </nav>
         

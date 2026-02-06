@@ -18,6 +18,7 @@ class Dashboard extends Component
         $todaySales = Sale::where('tenant_id', auth()->user()->tenant_id)
             ->where('user_id', auth()->id())
             ->whereDate('created_at', Carbon::today())
+            ->where('status', 'completed')
             ->get();
 
         $this->todaySalesCount = $todaySales->count();
