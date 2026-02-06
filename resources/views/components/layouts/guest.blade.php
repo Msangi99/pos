@@ -30,10 +30,10 @@
                     <!-- Right Side -->
                     <div class="flex items-center gap-4">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="text-sm font-medium hover:text-cyan transition">Dashboard</a>
+                            <a href="{{ url('/dashboard') }}" class="text-sm font-medium hover:text-cyan transition" wire:navigate>Dashboard</a>
                         @else
-                            <a href="{{ route('login') }}" class="text-sm font-medium hover:text-cyan transition">Login</a>
-                            <a href="{{ route('register') }}" class="px-4 py-2 rounded-xl bg-bright-blue hover:bg-bright-blue/90 text-white text-sm font-bold transition shadow-lg shadow-bright-blue/20">
+                            <a href="{{ route('login') }}" class="text-sm font-medium hover:text-cyan transition" wire:navigate>Login</a>
+                            <a href="{{ route('register') }}" class="px-4 py-2 rounded-xl bg-bright-blue hover:bg-bright-blue/90 text-white text-sm font-bold transition shadow-lg shadow-bright-blue/20" wire:navigate>
                                 Get Started
                             </a>
                         @endauth

@@ -23,7 +23,11 @@ class Login extends Component
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
             session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return redirect()->route(
+                auth()->user()->role === 'admin' 
+                    ? 'admin.dashboard' 
+                    : 'cashier.dashboard'
+            );
         }
 
         $this->addError('email', trans('auth.failed'));
